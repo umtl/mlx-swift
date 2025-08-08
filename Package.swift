@@ -74,8 +74,10 @@ let package = Package(
                 "mlx/tests",
 
                 // opt-out of these backends (using metal)
-                "mlx/mlx/backend/no_metal",
                 "mlx/mlx/backend/no_cpu",
+                
+                // exclude no_metal.cpp (conflicts with metal.cpp)
+                "mlx/mlx/backend/metal/no_metal.cpp",
 
                 // build variants (we are opting _out_ of these)
                 "mlx/mlx/io/no_safetensors.cpp",
@@ -93,6 +95,12 @@ let package = Package(
                 // bnns instead of simd (accelerate)
                 "mlx/mlx/backend/cpu/gemms/simd_fp16.cpp",
                 "mlx/mlx/backend/cpu/gemms/simd_bf16.cpp",
+                
+                // exclude CUDA backend (not needed on macOS)
+                "mlx/mlx/backend/cuda",
+                
+                // exclude no_gpu backend (conflicts with Metal backend)
+                "mlx/mlx/backend/no_gpu",
             ],
 
             cSettings: [
