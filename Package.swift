@@ -55,6 +55,11 @@ let package = Package(
                 "mlx/mlx/backend/no_cpu/compiled.cpp",
                 "mlx/mlx/backend/cpu/compiled.cpp",
 
+                // exclude fast primitive implementations that cause duplicate symbols
+                "mlx/mlx/backend/metal/normalization.cpp",
+                "mlx/mlx/backend/metal/rope.cpp",
+                "mlx/mlx/backend/metal/scaled_dot_product_attention.cpp",
+
                 // mlx files that are not part of the build
                 "mlx/ACKNOWLEDGMENTS.md",
                 "mlx/CMakeLists.txt",
