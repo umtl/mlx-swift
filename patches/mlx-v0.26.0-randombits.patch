@@ -1,0 +1,28 @@
+diff --git a/mlx/primitives.cpp b/mlx/primitives.cpp
+index 1234567..abcdefg 100644
+--- a/mlx/primitives.cpp
++++ b/mlx/primitives.cpp
+@@ -3355,6 +3355,11 @@ bool RandomBits::is_equivalent(const Primitive& other) const {
+   return shape_ == r_other.shape_;
+ }
+ 
++std::vector<Shape> RandomBits::output_shapes(
++    const std::vector<array>& inputs) {
++  return {shape_};
++}
++
+ std::vector<array> Real::vjp(
+     const std::vector<array>& primals,
+     const std::vector<array>& cotangents,
+diff --git a/mlx/primitives.h b/mlx/primitives.h
+index 1234567..abcdefg 100644
+--- a/mlx/primitives.h
++++ b/mlx/primitives.h
+@@ -1641,6 +1641,7 @@ class RandomBits : public UnaryPrimitive {
+   DEFINE_VMAP()
+   DEFINE_PRINT(RandomBits)
+   bool is_equivalent(const Primitive& other) const override;
++  std::vector<Shape> output_shapes(const std::vector<array>&) override;
+   std::pair<std::vector<int>, int> state() const {
+     return {shape_, width_};
+   };
