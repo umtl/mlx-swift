@@ -86,7 +86,8 @@ let package = Package(
 
                 // see PrepareMetalShaders -- don't build the kernels in place
                 "mlx/mlx/backend/metal/kernels",
-                "mlx/mlx/backend/metal/nojit_kernels.cpp",
+                // Exclude JIT kernels, use nojit_kernels.cpp instead
+                "mlx/mlx/backend/metal/jit_kernels.cpp",
 
                 // do not build distributed support (yet)
                 "mlx/mlx/distributed/mpi/mpi.cpp",
