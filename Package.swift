@@ -88,6 +88,8 @@ let package = Package(
                 "mlx/mlx/backend/metal/kernels",
                 // Exclude JIT kernels, use nojit_kernels.cpp instead
                 "mlx/mlx/backend/metal/jit_kernels.cpp",
+                // Exclude JIT directory - files are generated during build
+                "mlx/mlx/backend/metal/jit",
 
                 // do not build distributed support (yet)
                 "mlx/mlx/distributed/mpi/mpi.cpp",
