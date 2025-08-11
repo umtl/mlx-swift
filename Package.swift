@@ -45,7 +45,7 @@ let package = Package(
                 "json",
 
                 // vendored library
-                "fmt/test",
+                "fmt/test", // Excluding entire test directory which contains main.cc files
                 "fmt/doc",
                 "fmt/support",
                 "fmt/src/os.cc",
@@ -72,6 +72,13 @@ let package = Package(
                 "mlx/python",
                 "mlx/setup.py",
                 "mlx/tests",
+                // Exclude specific test files with main functions
+                "fmt/test/add-subdirectory-test",
+                "fmt/test/find-package-test",
+                "fmt/test/fuzzing",
+                "fmt/test/static-export-test",
+                "fmt/test/enforce-checks-test.cc",
+                "fmt/test/test-main.cc",
 
                 // opt-out of these backends (using metal)
                 "mlx/mlx/backend/no_cpu",
